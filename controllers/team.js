@@ -58,15 +58,11 @@ exports.post = (req, res, next) => {
 		req.flash('errors', errors);
 		return res.redirect('/teams/new');
 	}
-	if (req.file === undefined) {
-		req.flash('errors', { msg: 'Logo cannot be empty.' });
-		return res.redirect('/teams/new');
-	}
 
 	const team = new Team({
 		uuid: uuid(),
 		name: req.body.name,
-		logo: req.file.filename,
+		logo: req.file ? req.file.filename : null,
 		topName: req.body['top-name'],
 		topOpgg: req.body['top-opgg'],
 		jungleName: req.body['jungle-name'],

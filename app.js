@@ -20,7 +20,7 @@ const expressValidator = require('express-validator');
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({ path: '.env' });
 const app = express();
 
 /**

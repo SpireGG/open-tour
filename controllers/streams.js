@@ -1,17 +1,18 @@
 const Stream = require('../models/Stream');
 const Team = require('../models/Team');
 const uuid = require('uuid/v4');
+const twitch  = require('../config/twitch');
 
 /**
  * GET /streams
  * Streams page.
  */
 exports.getStreams = (req, res, next) => {
-	Stream.find({}).sort({ name: 1 }).exec((err, streams) => {
+	Stream.find({}).sort({ name: 1 }).populate('team').exec((err, streams) => {
 		if (err) return next(err);
 
 		res.render('streams/streams', {
-			title: 'Equipes',
+			title: 'Streams',
 			streams,
 		});
 	});
@@ -26,13 +27,17 @@ exports.getStream = (req, res, next) => {
 	if (!uuid) res.redirect('index');
 
 	Stream.findOne({ uuid: uuid }, (err, stream) => {
+		console.log(stream);
 		if (err) return next(err);
 
-		return res.render('streams/stream', {
-			title: stream.name,
-			stream,
+		twitch.isStreamLive(stream.twitch_id).then((live) => {
+			stream.live = live;
+			return res.render('streams/stream', {
+				title: stream.name,
+				stream,
+			});
 		});
-	});
+	}).populate('team');
 };
 
 /**

@@ -1,35 +1,38 @@
 extends layout
 
 block content
-  .jumbotron
-    .row
-      .col-md-8
-        h1 OpenTour Live
-        p.lead Tout sur l'Open Tour League of Legends
-        hr
-        p
-          a.btn.btn-raised(href='#', role='button') View details »
-      .col-md-4
-        h3 Streams en cours
-        hr
+  .row
+    .col-md-8
+      h1 OpenTour Live
+      p.lead Tout sur l'Open Tour League of Legends
+      hr
+      ul
+        li
+          a(href='https://battlegrounds.leagueoflegends.com/v4Kc1fTk33SwLA7kPsNUYD1p/brackets/798', role='button') Arbre phase préliminaire
+        li
+          p Arbre phase finale
+      h6 Equipes présélectionnées top 16
+      ul
+        li DragonFly
+        li BlackMice
+        li Bastille Legacy
+        li Reflex Esport Club
+        li C'est cadeau
+        li Elyandra Esport
+        li Oplon
+        li Teh le Zoo
+        li Lunary
+        li Zephyr Esport
+        li Powners
+        li GameWard
+        li Got2Game
+        li Unfazed Esport
+        li team de Krakmo
+        li Warthox Esport
 
-        .row.mb-3
-          .col-3
-            img(src="https://static-cdn.jtvnw.net/jtv_user_pictures/be3ca46d-f9e6-465e-9aa3-6ff30b4e1f9e-profile_image-70x70.jpeg")
-          .col-9
-            h4 Gob GG
-            p.card-subtitle.text-muted Reflex vs Zephyr Esport
+    .col-md-4
+      h3 Streams en cours
+      hr
 
-        .row.mb-3
-          .col-3
-            img(src="https://static-cdn.jtvnw.net/jtv_user_pictures/8c55fdc6-9b84-4daf-a33b-cb318acbf994-profile_image-70x70.png")
-          .col-9
-            h4 OverwatchLeague
-            p.card-subtitle.text-muted GameWard vs C'est cadeau
-
-        .row.mb-3
-          .col-3
-            img(src="https://static-cdn.jtvnw.net/jtv_user_pictures/1e120ba5-5532-4a1d-847a-4c87a51637f1-profile_image-70x70.jpeg")
-          .col-9
-            h4 LVPUK
-            p.card-subtitle.text-muted DragonFly vs Elyandra esport
+      for stream in streams
+        stream(id=stream.twitch_id, title=stream.title, name=stream.name)

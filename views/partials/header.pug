@@ -8,8 +8,6 @@
       span.navbar-toggler-icon
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.nav-item(class=(title === 'Accueil') ? 'active' : undefined)
-          a.nav-link(href='/') Accueil
         li.nav-item(class=(title === 'Equipes') ? 'active' : undefined)
           a.nav-link(href='/teams') Equipes
         li.nav-item(class=(title === 'Streams') ? 'active' : undefined)
@@ -41,8 +39,6 @@
               span Add
               i.caret
             div.dropdown-menu
-              a.dropdown-item(href='/leagues/new') League
-              .dropdown-divider
               a.dropdown-item(href='/teams/new') Team
               .dropdown-divider
-              a.dropdown-item(href='/players/new') Player
+              a.dropdown-item(href='/streams/new') Stream

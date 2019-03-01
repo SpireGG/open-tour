@@ -6,17 +6,15 @@ block content
       a.float-right.btn.btn-primary(href='/streams/new') Add a stream
   hr
 
-  each stream in streams
-    div.row
-      .col.col-12
+  .row
+    each stream in streams
+      .col.col-6
         a.card(href='/streams/' + stream.uuid)
           .card-body.nt-flex-card
             .nt-lollypop
               .nt-lollypop_pop
                 if stream.team
-                  img.avatar.img-sm(src='/assets/teams/' + stream.team.logo)
+                  img.avatar.img-sm.img-fluid(src='/assets/teams/' + stream.team.logo)
               .nt-lollypop_stick
-                h3 #{stream.title}
-              .nt-lollypop_end
-                p 5000 viewers
+                h3 #{stream.name}
         br

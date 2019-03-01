@@ -19,10 +19,10 @@ gulp.task('reload', () => {
 });
 
 gulp.task('images', () => {
-  gulp.src('public/images/**/*')
+	return gulp.src('public/images/**/*')
     .pipe(plugins.cache(plugins.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
     .pipe(gulp.dest('public/images/'));
-});twit
+});
 
 gulp.task('styles', () => {
   const postcssPlugins = [
@@ -30,7 +30,7 @@ gulp.task('styles', () => {
     cssnext
   ];
 
-  gulp.src(['styles/main*.scss'])
+  return gulp.src(['styles/main.scss'])
     .pipe(plugins.plumber({
       errorHandler(error) {
         console.log(error.message);
@@ -43,24 +43,37 @@ gulp.task('styles', () => {
     .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('build', () => {
+const watchify = require('watchify');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const log = require('gulplog');
+const assign = require('lodash.assign');
 
+
+const opts = assign({}, watchify.args, {
+	entries: ['./scripts/main.js'],
+	debug: true
+});
+const b = watchify(browserify(opts));
+
+gulp.task('scripts', bundle); // so you can run `gulp js` to build the file
+b.on('update', bundle); // on any dep update, runs the bundler
+b.on('log', log.info); // output build logs to terminal
+
+function bundle() {
+	return b.bundle()
+		.on('error', log.error.bind(log, 'Browserify Error'))
+		.pipe(source('main.js'))
+		.pipe(buffer())
+		.pipe(gulp.dest('./public/js/'))
+		.pipe(browserSync.reload({ stream: true }));
+}
+
+gulp.task('watch', () => {
+	gulp.watch('scripts/**/*.js', gulp.series('scripts'));
+	gulp.watch('styles/**/*.scss', gulp.series('styles'));
+	gulp.watch('views/**/*.pug', gulp.series('reload'));
 });
 
-gulp.task('scripts', () => {
-  gulp.src(['scripts/*.js'])
-    .pipe(plugins.plumber({
-      errorHandler(error) {
-        console.log(error.message);
-        this.emit('end');
-      }
-    }))
-    .pipe(gulp.dest('public/js/'))
-    .pipe(browserSync.reload({ stream: true }));
-});
-
-gulp.task('default', ['browser-sync'], () => {
-  gulp.watch('scripts/**/*.js', ['scripts']);
-  gulp.watch('styles/**/*.scss', ['styles']);
-  gulp.watch('views/**/*.pug', ['reload']);
-});
+gulp.task('default', gulp.parallel('browser-sync', 'watch'));

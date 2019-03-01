@@ -57,3 +57,4 @@ Thumbs.db
 .com.apple.timemachine.donotpresent
 uploads/*
 !uploads
+public/

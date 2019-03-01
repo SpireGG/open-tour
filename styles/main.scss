@@ -1,4 +1,4 @@
-@import "themes/default/variables";
+@import "variables";
 
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/@ladjs/bootstrap-social/bootstrap-social.scss";
@@ -7,7 +7,7 @@
 @import "node_modules/@fortawesome/fontawesome-free/scss/regular";
 @import "node_modules/@fortawesome/fontawesome-free/scss/solid";
 
-@import "themes/default/default";
+@import "default";
 
 // Scaffolding
 // -------------------------
@@ -185,6 +185,18 @@ a.card, a.player {
   .nt-lollypop_pop {
     margin-right: 1rem;
   }
+  .nt-lollypop_stick {
+    flex-grow: 1;
+  }
 }
 
 #twitch-embed > iframe {width: 100%;}
+.stream-card {
+  color: #212529;
+  display: block;
+  &:hover{
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 2px 2px 3px 0 rgba(133, 133, 133, .7);
+  }
+}

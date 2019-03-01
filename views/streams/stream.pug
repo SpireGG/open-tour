@@ -13,7 +13,9 @@ block content
       #twitch-embed
 
       if stream.team
-        img.avatar.img-lg.img-fluid(src='/assets/streams/' + stream.team.logo)
+        img.avatar.img-lg.img-fluid(src='/assets/teams/' + stream.team.logo)
+      if stream.live
+        p Live !
 
   script.
     new Twitch.Embed("twitch-embed", {

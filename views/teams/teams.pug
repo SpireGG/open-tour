@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h2 Equipes
+    if user
+      a.float-right.btn.btn-primary(href='/teams/new') Add a team
+  hr
+
+  div.row
+    each team in teams
+      .col.col-6
+        a.card(href='/teams/' + team.uuid)
+          .card-body.nt-flex-card
+            .nt-lollypop
+              .nt-lollypop_pop
+                img.img-sm(src='/assets/teams/' + team.logo)
+              .nt-lollypop_stick
+                h3 #{team.name}
+        br

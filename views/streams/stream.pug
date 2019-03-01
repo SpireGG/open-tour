@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h2 #{stream.name}
+    .nt-btn-bar.float-right
+      if user
+        button.btn.btn-danger(onclick="deleteStream('"+stream.uuid+"')") Delete
+      a.btn.btn-primary(href='/streams') Back
+  hr
+
+  .row
+    .col.col-12
+      #twitch-embed
+
+      if stream.team
+        img.avatar.img-lg.img-fluid(src='/assets/streams/' + stream.team.logo)
+
+  script.
+    new Twitch.Embed("twitch-embed", {
+      height: 480,
+      channel: "#{stream.twitch_id}"
+    });

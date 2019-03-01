@@ -1,0 +1,48 @@
+.navbar.navbar-light.fixed-top.navbar-expand-lg
+  .container
+    a.navbar-brand(href='/')
+      img.img-xs(src="/assets/logo.svg")
+      | OpenTour Live
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+      span.sr-only Menu
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.nav-item(class=(title === 'Accueil') ? 'active' : undefined)
+          a.nav-link(href='/') Accueil
+        li.nav-item(class=(title === 'Equipes') ? 'active' : undefined)
+          a.nav-link(href='/teams') Equipes
+        li.nav-item(class=(title === 'Streams') ? 'active' : undefined)
+          a.nav-link(href='/streams') Streams
+
+      ul.nav.navbar-nav.ml-auto
+        if !user
+          li.nav-item(class=(title === 'Connexion') ? 'active' : undefined)
+            a.nav-link(href='/login') Connexion
+          li.nav-item(class=(title === "S'enregistrer") ? 'active' : undefined)
+            a.nav-link(href='/signup') S'enregistrer
+        else
+          li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
+            a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
+              if user.profile.picture
+                img(src=user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+              span= user.profile.name || user.email || user.id
+              i.caret
+            ul.dropdown-menu
+              li.dropdown-item
+                a(href='/account') My Account
+              li.divider.dropdown-item
+              li.dropdown-item
+                a(href='/logout') Logout
+          li.nav-item.dropdown(class=(title.indexOf('Add') >= 0 ? 'active' : undefined))
+            a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              span Add
+              i.caret
+            div.dropdown-menu
+              a.dropdown-item(href='/leagues/new') League
+              .dropdown-divider
+              a.dropdown-item(href='/teams/new') Team
+              .dropdown-divider
+              a.dropdown-item(href='/players/new') Player

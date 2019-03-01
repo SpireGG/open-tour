@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h2 Streams
+    if user
+      a.float-right.btn.btn-primary(href='/streams/new') Add a stream
+  hr
+
+  each stream in streams
+    div.row
+      .col.col-12
+        a.card(href='/streams/' + stream.uuid)
+          .card-body.nt-flex-card
+            .nt-lollypop
+              .nt-lollypop_pop
+                if stream.team
+                  img.avatar.img-sm(src='/assets/teams/' + stream.team.logo)
+              .nt-lollypop_stick
+                h3 #{stream.title}
+              .nt-lollypop_end
+                p 5000 viewers
+        br

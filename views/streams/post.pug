@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  .col-md-8.offset-md-2
+    .card
+      .card-header
+        h3 Add a stream
+
+      form.card-body(method='POST', action="/api/streams")
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group.row
+          label(class='col-sm-3 control-label', for='name') Name
+          .col-sm-9
+            input.form-control(type='text', name='name', id='name', autofocus=true)
+
+        .form-group.row
+          label(class='col-sm-3 control-label', for='title') Title
+          .col-sm-9
+            input.form-control(type='text', name='title', id='title')
+
+        .form-group.row
+          label(class='col-sm-3 control-label', for='twitch_id') Twitch
+          .col-sm-9
+            input.form-control(type='text', name='twitch_id', id='twitch_id')
+
+        .form-group.row
+          label(class='col-sm-3 control-label', for='team') Team
+          .col-sm-9
+            select.form-control(name='team', id='team')
+              option(value="") Aucune
+              for team in teams
+                option(value=team.uuid) #{team.name}
+
+        .form-group.row
+          .col
+            .float-right
+              button.btn.btn-primary(type='submit')
+                i.fab.fa-twitch
+                | Save

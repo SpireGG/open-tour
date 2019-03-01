@@ -1,0 +1,64 @@
+extends ../layout
+
+block content
+  .col-md-8.offset-md-2
+    .card
+      .card-header
+        h3 Add a team
+
+      form.card-body(method='POST', enctype='multipart/form-data', action="/api/teams")
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group.row
+          label(class='col-sm-3 control-label', for='name') Name
+          .col-sm-9
+            input.form-control(type='text', name='name', id='name', autofocus=true)
+        .form-group.row
+          label(class='col-sm-3 control-label', for='logo') Logo
+          .col-sm-9
+            input(type='file', name='logo', id='logo', accept='image/*', onchange="previewFile(event)")
+            img#output(style="max-height:200px")
+
+        .row
+          .col
+            p.font-weight-bold Equipe
+        .form-group.row
+          label(class='col-sm-3 control-label') Toplaner
+          .col-sm-4
+            input.form-control(type='text', name='top-name', id='top-name', placeholder="Nom")
+          .col-sm-5
+            input.form-control(type='text', name='top-opgg', id='top-opgg', placeholder="op.gg")
+
+        .form-group.row
+          label(class='col-sm-3 control-label') Jungler
+          .col-sm-4
+            input.form-control(type='text', name='jungle-name', id='jungle-name', placeholder="Nom")
+          .col-sm-5
+            input.form-control(type='text', name='jungle-opgg', id='jungle-opgg', placeholder="op.gg")
+
+        .form-group.row
+          label(class='col-sm-3 control-label') Midlaner
+          .col-sm-4
+            input.form-control(type='text', name='mid-name', id='mid-name', placeholder="Nom")
+          .col-sm-5
+            input.form-control(type='text', name='mid-opgg', id='mid-opgg', placeholder="op.gg")
+
+        .form-group.row
+          label(class='col-sm-3 control-label') AD Carry
+          .col-sm-4
+            input.form-control(type='text', name='adc-name', id='adc-name', placeholder="Nom")
+          .col-sm-5
+            input.form-control(type='text', name='adc-opgg', id='adc-opgg', placeholder="op.gg")
+
+        .form-group.row
+          label(class='col-sm-3 control-label') Support
+          .col-sm-4
+            input.form-control(type='text', name='support-name', id='support-name', placeholder="Nom")
+          .col-sm-5
+            input.form-control(type='text', name='support-opgg', id='support-opgg', placeholder="op.gg")
+
+        .form-group.row
+          .col
+            .float-right
+              button.btn.btn-primary(type='submit')
+                i.fa.fa-users
+                | Save

@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  h2 #{team.name}
+    .nt-btn-bar.float-right
+      if user
+        button.btn.btn-danger(onclick="deleteTeam('"+team.uuid+"')") Delete
+      a.btn.btn-primary(href='/teams') Back
+  hr
+
+  .row
+    .col-sm-3.text-center
+      .row
+        .col.col-12
+          img.avatar.img-lg.img-fluid(src='/assets/teams/' + team.logo)
+        .col.col-12.mt-3
+          a(class="--opgg", href='//euw.op.gg/multi/query=' + _.join([team.topOpgg, team.jungleOpgg, team.midOpgg, team.adcOpgg, team.supportOpgg], ','), target="_blank", rel="noopener") OP.GG
+    .col-sm-9
+      .row(style="justify-content:space-between")
+        .col.col-sm-2
+          a.player(href='//euw.op.gg/summoner/userName=' + team.topOpgg, target="_blank", rel="noopener")
+            p.text-center.font-weight-bold.mb-0 #{team.topName}
+            img.img-fluid(src="/assets/roles/top.png")
+        .col.col-sm-2
+          a.player(href='//euw.op.gg/summoner/userName=' + team.jungleOpgg, target="_blank", rel="noopener")
+            p.text-center.font-weight-bold.mb-0 #{team.jungleName}
+            img.img-fluid(src="/assets/roles/jungle.png")
+        .col.col-sm-2
+          a.player(href='//euw.op.gg/summoner/userName=' + team.midOpgg, target="_blank", rel="noopener")
+            p.text-center.font-weight-bold.mb-0 #{team.midName}
+            img.img-fluid(src="/assets/roles/mid.png")
+        .col.col-sm-2
+          a.player(href='//euw.op.gg/summoner/userName=' + team.adcOpgg, target="_blank", rel="noopener")
+            p.text-center.font-weight-bold.mb-0 #{team.adcName}
+            img.img-fluid(src="/assets/roles/adc.png")
+        .col.col-sm-2
+          a.player(href='//euw.op.gg/summoner/userName=' + team.supportOpgg, target="_blank", rel="noopener")
+            p.text-center.font-weight-bold.mb-0 #{team.supportName}
+            img.img-fluid(src="/assets/roles/support.png")
+

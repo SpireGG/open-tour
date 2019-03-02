@@ -206,3 +206,9 @@ a.card, a.player {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.team-player {
+  display: flex;
+  align-items: center;
+
+  img {margin-right: 1rem;}
+}

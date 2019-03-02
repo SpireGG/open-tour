@@ -55,4 +55,17 @@ module.exports = function (app) {
 	app.get('/streams/:uuid', streamController.getStream);
 	app.post('/api/streams', streamController.post);
 	app.delete('/api/streams/:uuid', streamController.deleteStream);
+
+
+	/**
+	 * Match routes
+	 */
+	const matchController = require('./controllers/match');
+
+	app.get('/', matchController.getMatchs);
+	app.get('/matchs', matchController.getMatchs);
+	app.get('/matchs/new', matchController.postMatch);
+	app.get('/matchs/:uuid', matchController.getMatch);
+	app.post('/api/matchs', matchController.post);
+	app.delete('/api/matchs/:uuid', matchController.deleteMatch);
 };

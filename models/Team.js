@@ -6,6 +6,7 @@ const teamSchema = new mongoose.Schema({
   logo: String,
 
 	streams: [],
+	matchs: [],
 
 	topName: { type: String },
 	topOpgg: { type: String },

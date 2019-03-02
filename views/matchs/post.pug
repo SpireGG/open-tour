@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  .col-md-8.offset-md-2
+    .card
+      .card-header
+        h3 Add a match
+
+      form.card-body(method='POST', action="/api/matchs")
+        input(type='hidden', name='_csrf', value=_csrf)
+
+        .form-group.row
+          label(class='col-sm-3 control-label', for='link') Link
+          .col-sm-9
+            input.form-control(type='text', name='link', id='link')
+
+        .form-group.row
+          label(class='col-sm-3 control-label', for='team_blue') Blue Team
+          .col-sm-9
+            select.form-control(name='team_blue', id='team_blue')
+              option(value="") Aucune
+              for team in teams
+                option(value=team.uuid) #{team.name}
+
+        .form-group.row
+          label(class='col-sm-3 control-label', for='team_red') Red Team
+          .col-sm-9
+            select.form-control(name='team_red', id='team_red')
+              option(value="") Aucune
+              for team in teams
+                option(value=team.uuid) #{team.name}
+
+        .form-group.row
+          .col
+            .float-right
+              button.btn.btn-primary(type='submit')
+                i.fab.fa-twitch
+                | Save

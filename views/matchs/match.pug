@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  h2 #{match.team_blue.name} vs #{match.team_red.name}
+    .nt-btn-bar.float-right
+      if user
+        button.btn.btn-danger(onclick="deleteMatch('"+match.uuid+"')") Delete
+      a.btn.btn-primary(href='/matchs') Back
+  hr
+
+  .row
+    .col-sm-6
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_blue.topOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/top.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_blue.topName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_blue.jungleOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/jungle.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_blue.jungleName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_blue.midOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/mid.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_blue.midName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_blue.adcOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/adc.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_blue.adcName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_blue.supportOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/support.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_blue.supportName}
+
+    .col-sm-6
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_red.topOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/top.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_red.topName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_red.jungleOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/jungle.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_red.jungleName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_red.midOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/mid.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_red.midName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_red.adcOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/adc.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_red.adcName}
+      a.team-player(href='//euw.op.gg/summoner/userName=' + match.team_red.supportOpgg, target="_blank", rel="noopener")
+        img.img-sm.img-fluid(src="/assets/roles/support.png")
+        p.text-center.font-weight-bold.mb-0 #{match.team_red.supportName}
+

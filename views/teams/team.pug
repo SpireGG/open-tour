@@ -12,7 +12,10 @@ block content
     .col-sm-3.text-center
       .row
         .col.col-12
-          img.img-lg.img-fluid(src='/assets/teams/' + team.logo)
+          if team.logo
+            img.img-lg.img-fluid(src='/assets/teams/' + team.logo)
+          else
+            img.img-lg.img-fluid(src='/assets/logo.svg')
         .col.col-12.mt-3
           a(class="--opgg", href='//euw.op.gg/multi/query=' + _.join([team.topOpgg, team.jungleOpgg, team.midOpgg, team.adcOpgg, team.supportOpgg], ','), target="_blank", rel="noopener") OP.GG
     .col-sm-9

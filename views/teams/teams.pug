@@ -13,7 +13,10 @@ block content
           .card-body.nt-flex-card
             .nt-lollypop
               .nt-lollypop_pop
-                img.img-sm(src='/assets/teams/' + team.logo)
+                if team.logo
+                  img.img-sm(src='/assets/teams/' + team.logo)
+                else
+                  img.img-sm(src='/assets/logo.svg')
               .nt-lollypop_stick
                 h3 #{team.name}
         br

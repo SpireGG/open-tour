@@ -27,7 +27,6 @@ exports.getStream = (req, res, next) => {
 	if (!uuid) res.redirect('index');
 
 	Stream.findOne({ uuid: uuid }, (err, stream) => {
-		console.log(stream);
 		if (err) return next(err);
 
 		twitch.isStreamLive(stream.twitch_id).then((live) => {
@@ -65,7 +64,6 @@ exports.postStream = (req, res) => {
  * Stream create.
  */
 exports.post = (req, res, next) => {
-	console.log(req.body);
 	req.assert('name', 'Name cannot be blank').notEmpty();
 	req.assert('twitch_id', 'Twitch id cannot be blank').notEmpty();
 	req.assert('title', 'Title cannot be blank').notEmpty();
@@ -104,9 +102,8 @@ exports.post = (req, res, next) => {
 			const update = Team.update({ uuid: req.body.team }, { $push:  { streams: stream } });
 			Promise.all([save, update])
 				.then((result) => {
-					console.log(result);
 					req.flash('success', { msg: `Stream ${stream.name} was successfully added.` });
-					return res.redirect(`/streams/${result}`);
+					return res.redirect(`/streams/${result.uuid}`);
 				})
 				.catch(err => next(err));
 		});

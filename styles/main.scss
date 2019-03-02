@@ -200,3 +200,9 @@ a.card, a.player {
     box-shadow: 2px 2px 3px 0 rgba(133, 133, 133, .7);
   }
 }
+
+.card-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

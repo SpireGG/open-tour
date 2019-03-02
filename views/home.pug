@@ -10,29 +10,50 @@ block content
         li
           a(href='https://battlegrounds.leagueoflegends.com/v4Kc1fTk33SwLA7kPsNUYD1p/brackets/798', role='button') Arbre phase préliminaire
         li
-          p Arbre phase finale
-      h6 Equipes présélectionnées top 16
-      ul
-        li DragonFly
-        li BlackMice
-        li Bastille Legacy
-        li Reflex Esport Club
-        li C'est cadeau
-        li Elyandra Esport
-        li Oplon
-        li Teh le Zoo
-        li Lunary
-        li Zephyr Esport
-        li Powners
-        li GameWard
-        li Got2Game
-        li Unfazed Esport
-        li team de Krakmo
-        li Warthox Esport
+          a(href='https://battlegrounds.leagueoflegends.com/122x1M9hQ4g8fKN2wHYJamNZ/brackets/799', role='button') Arbre phase finale
+      .row
+        .col-md-6
+          h6 Equipes présélectionnées top 16
+          ul
+            li DragonFly
+            li BlackMice
+            li Bastille Legacy
+            li Reflex Esport Club
+            li C'est cadeau
+            li Elyandra Esport
+            li Oplon
+            li Teh le Zoo
+            li Lunary
+            li Zephyr Esport
+            li Powners
+            li GameWard
+            li Got2Game
+            li Unfazed Esport
+            li Alpha Slayers
+            li Warthox Esport
+        .col-md-6
+          h6 Equipes qualifiées samedi
+          ul
+            li Omerix Old
+            li Shield Esport Black
+            li Metaleak Academy
+            li BattlePlays
+            li Eden Luxus A
+            li Elan d'Espoir FR
+            li Metafun
+            li 1 Girl 4 Retards
+            li Good Guys Only
+            li The Greedy Climb
+            li Seren
+            li Rocalys
+            li ADNBlack
+            li LEF Ragnarok
+            li LDV Meteor
+            li 777
 
     .col-md-4
       h3 Streams en cours
       hr
 
       for stream in streams
-        stream(id=stream.twitch_id, title=stream.title, name=stream.name)
+        stream(id=stream.twitch_id, title=stream.title, name=stream.name, uuid=stream.uuid)

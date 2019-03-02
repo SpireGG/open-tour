@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-starter",
-  "version": "5.1.2",
-  "description": "A boilerplate for Node.js web applications",
+  "name": "open-tour",
+  "version": "1.0.0",
+  "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/SpireGG/open-tour.git"
   },
-  "author": "Sahat Yalkabov",
+  "author": "Chypriote",
   "license": "MIT",
   "scripts": {
     "start": "node app.js",

@@ -12,6 +12,13 @@
           a.nav-link(href='/teams') Equipes
         li.nav-item(class=(title === 'Streams') ? 'active' : undefined)
           a.nav-link(href='/streams') Streams
+        li.nav-item.dropdown(class=(title.indexOf('Resultats') >= 0 ? 'active' : undefined))
+          a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            span Resultats
+            i.caret
+          div.dropdown-menu
+            a.dropdown-item(href='/etapes/1') Etape 1
+
 
       ul.nav.navbar-nav.ml-auto
         if !user

@@ -68,4 +68,7 @@ module.exports = function (app) {
 	app.get('/matchs/:uuid', matchController.getMatch);
 	app.post('/api/matchs', matchController.post);
 	app.delete('/api/matchs/:uuid', matchController.deleteMatch);
+
+	const stageController = require('./controllers/stages');
+	app.get('/etapes/:stage', stageController.getStage);
 };

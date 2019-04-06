@@ -8,46 +8,8 @@
       span.navbar-toggler-icon
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.nav-item(class=(title === 'Equipes') ? 'active' : undefined)
-          a.nav-link(href='/teams') Equipes
-        li.nav-item(class=(title === 'Streams') ? 'active' : undefined)
-          a.nav-link(href='/streams') Streams
-        li.nav-item.dropdown(class=(title.indexOf('Resultats') >= 0 ? 'active' : undefined))
-          a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-            span Resultats
-            i.caret
-          div.dropdown-menu
-            a.dropdown-item(href='/etapes/1') Etape 1
+        li.nav-item(class=(title === 'Etape 1') ? 'active' : undefined)
+          a.dropdown-item(href='/etape-1') Etape 1
+        li.nav-item(class=(title === 'Etape 2') ? 'active' : undefined)
+          a.dropdown-item(href='/etape-2') Etape 2
 
-
-      ul.nav.navbar-nav.ml-auto
-        if !user
-          li.nav-item(class=(title === 'Connexion') ? 'active' : undefined)
-            a.nav-link(href='/login') Connexion
-          //- li.nav-item(class=(title === "S'enregistrer") ? 'active' : undefined)
-          //-   a.nav-link(href='/signup') S'enregistrer
-        else
-          li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
-            a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src=user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-              span= user.profile.name || user.email || user.id
-              i.caret
-            ul.dropdown-menu
-              li.dropdown-item
-                a(href='/account') My Account
-              li.divider.dropdown-item
-              li.dropdown-item
-                a(href='/logout') Logout
-          li.nav-item.dropdown(class=(title.indexOf('Add') >= 0 ? 'active' : undefined))
-            a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-              span Add
-              i.caret
-            div.dropdown-menu
-              a.dropdown-item(href='/teams/new') Team
-              .dropdown-divider
-              a.dropdown-item(href='/streams/new') Stream
-              .dropdown-divider
-              a.dropdown-item(href='/matchs/new') Match

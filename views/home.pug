@@ -3,59 +3,55 @@ extends layout
 block content
   .row
     .col-md-8
-      h1 OpenTour Live
-      p.lead Tout sur l'Open Tour League of Legends
+      h1 OpenTour - Etape 2
       hr
       .row
         .col-md-6
           ul
             li
-              a(href='https://battlegrounds.leagueoflegends.com/v4Kc1fTk33SwLA7kPsNUYD1p/brackets/798', role='button') Arbre phase préliminaire
+              a(href='https://battlegrounds.leagueoflegends.com/ZuQFZNciJfuaM2Pv7LA747GT/brackets/844', role='button', target="_blank", rel="noopener") Arbre phase préliminaire
             li
-              a(href='https://battlegrounds.leagueoflegends.com/122x1M9hQ4g8fKN2wHYJamNZ/brackets/799', role='button') Arbre phase finale
+              a(href='https://battlegrounds.leagueoflegends.com/N4bbT45Y5LAj7FiWYB1SH1kx', role='button', target="_blank", rel="noopener") Arbre phase finale
       .row
         .col-md-6
           h6 Equipes présélectionnées top 16
           ul
-            li DragonFly
-            li BlackMice
-            li Bastille Legacy
-            li Reflex Esport Club
-            li C'est cadeau
-            li Elyandra Esport
-            li Oplon
-            li Teh le Zoo
             li Lunary
             li Zephyr Esport
-            li Powners
-            li GameWard
             li Got2Game
+            li Bastille Legacy
+            li BlackMice
+            li Omerix Esport
+            li Powners
+            li C'est cadeau
+            li Konix Esport
+            li MetaFun
+            li Alphas Slayers
+            li Rocalys
+            li Bunker eSport
+            li Elyandra Esport
+            li Elan DEspoir FR
             li Unfazed Esport
-            li Alpha Slayers
-            li Warthox Esport
         .col-md-6
           h6 Equipes qualifiées samedi
           ul
-            li Omerix Old
-            li Shield Esport Black
-            li Metaleak Academy
-            li BattlePlays
-            li Eden Luxus A
-            li Elan d'Espoir FR
-            li Metafun
-            li 1 Girl 4 Retards
-            li Good Guys Only
-            li The Greedy Climb
-            li Seren
-            li Rocalys
-            li ADNBlack
-            li LEF Ragnarok
+            li EGIRL POWER ^^
+            li Team Delta Project
+            li Refuse Resist
+            li TNBD Esport
+            li IKEA Esport Club
+            li Etat Arcanique
+            li Opportunity Esport
+            li Galactix Esport
+            li GameWard
             li LDV Meteor
-            li 777
+            li Project Conqueror
+            li Same Blood Esport
+            li Try Out Madness
+            li Warthox Esport
+            li PCS Improve
+            li Exalty Parasol de Pluie
 
     .col-md-4
-      h3 Streams en cours
-      hr
+      include partials/ranking
 
-      for stream in streams
-        stream(id=stream.twitch_id, title=stream.title, name=stream.name, uuid=stream.uuid)
